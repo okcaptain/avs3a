@@ -24,7 +24,7 @@ void Avs3DecoderDestroy(AVS3DecoderHandle hAvs3Dec);
 
 void ResetBitstream(AVS3_BSTEREAM_DATA_DEC_HANDLE hBitstream);
 
-// short ReadBitstream(AVS3DecoderHandle hAvs3Dec, FILE* fBitstream);
+//short ReadBitstream(AVS3DecoderHandle hAvs3Dec, FILE* fBitstream);
 
 uint16_t GetNextIndice(uint8_t *bitstream, uint32_t *nextBitPos, int16_t numBits);
 

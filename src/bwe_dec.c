@@ -22,6 +22,14 @@
 #include "avs3_stat_com.h"
 #include "avs3_prot_com.h"
 
+#define RAND_MAX 0x7FFF
+static unsigned int seed = 432078;
+
+int rand()
+{
+    seed = (1103515245 * seed + 12345) & RAND_MAX;
+    return (int)seed;
+}
 
 /*
 Init decoder side bwe data structure
