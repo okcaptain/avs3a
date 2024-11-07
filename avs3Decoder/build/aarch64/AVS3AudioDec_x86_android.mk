@@ -4,18 +4,19 @@
 ###             generated for LINUX environments
 ###             by shengyancong
 ###
-# NDK=/root/android-ndk-r20b
+# NDK=/home/yogiczy/media3/android-ndk-r27
 TOOLCHAIN=$(NDK)/toolchains/llvm/prebuilt/linux-x86_64
 
-ARCH=arm64
-CPU=armv8-a
+ARCH=arm
+CPU=i686
 API=21
-CC=$(TOOLCHAIN)/bin/aarch64-linux-android$(API)-clang
-CXX=$(TOOLCHAIN)/bin/aarch64-linux-android$(API)-clang++
+CC=$(TOOLCHAIN)/bin/i686-linux-android$(API)-clang
+CXX=$(TOOLCHAIN)/bin/i686-linux-android$(API)-clang++
 SYSROOT=$(TOOLCHAIN)/sysroot
-CROSS=aarch64-linux-android
+CROSS=arm-linux-android
 CROSS_PREFIX=$(TOOLCHAIN)/bin/$(CROSS)
-OPTIMIZE_CFLAGS="-march=$(CPU)"
+OPTIMIZE_CFLAGS="-march=$(CPU) -mfloat-abi=softfp -mfpu=vfp -marm"
+ADDI_LDFLAGS="-ldl -L../dependency/linux/arm"
 
 NAME = libav3ad.so
 OS_ARCH := aarch64
@@ -32,7 +33,7 @@ AVX2?= 0
 ### Support AVX512
 AVX512?= 0
 ### Support NEON
-NEON?= 1
+NEON?= 0
 ### prof on ?
 PROF?= 0
 
@@ -92,7 +93,7 @@ CFLAGS += -DANDROID -Wl,--no-undefined -Wl,--retain-symbols-file=retain_symbols.
 
 SRC_DIRS=../../src ../../../libavs3_common ../../../libavs3_debug
 SRC=$(foreach TMP_SRC_DIRS, $(SRC_DIRS), $(wildcard $(TMP_SRC_DIRS)/*.c)) 
-TARGET=../../../libs/arm64-v8a/libav3ad.so
+TARGET=../../../libs/x86/libav3ad.so
 OBJ:=$(SRC:.c=.o)
 
 LIB_EXTERN=-L../../lib/  -L../../deps/lib

@@ -4,12 +4,12 @@
 ###             generated for LINUX environments
 ###             by shengyancong
 ###
-NDK=/root/android-ndk-r20b
+# NDK=/root/android-ndk-r20b
 TOOLCHAIN=$(NDK)/toolchains/llvm/prebuilt/linux-x86_64
 
 ARCH=arm
 CPU=armv7-a
-API=24
+API=21
 CC=$(TOOLCHAIN)/bin/armv7a-linux-androideabi$(API)-clang
 CXX=$(TOOLCHAIN)/bin/armv7a-linux-androideabi$(API)-clang++
 SYSROOT=$(TOOLCHAIN)/sysroot
@@ -18,7 +18,7 @@ CROSS_PREFIX=$(TOOLCHAIN)/bin/$(CROSS)
 OPTIMIZE_CFLAGS="-march=$(CPU) -mfloat-abi=softfp -mfpu=vfp -marm"
 ADDI_LDFLAGS="-ldl -L../dependency/linux/arm"
 
-NAME = libAVS3AudioDec.so
+NAME = libav3ad.so
 OS_ARCH := aarch64
 ### include debug information: 1=yes, 0=no
 DBG?= 0
@@ -93,7 +93,7 @@ CFLAGS += -DANDROID -Wl,--no-undefined -Wl,--retain-symbols-file=retain_symbols.
 
 SRC_DIRS=../../src ../../../libavs3_common ../../../libavs3_debug
 SRC=$(foreach TMP_SRC_DIRS, $(SRC_DIRS), $(wildcard $(TMP_SRC_DIRS)/*.c)) 
-TARGET=../../../../../../../bin/linux/libAVS3AudioDec.so
+TARGET=../../../libs/armeabi-v7a/libav3ad.so
 OBJ:=$(SRC:.c=.o)
 
 LIB_EXTERN=-L../../lib/  -L../../deps/lib
