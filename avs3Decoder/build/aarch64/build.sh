@@ -4,10 +4,10 @@ FF_ARCH=$1
 
 mkdir -p ../../../libs/{arm64-v8a,armeabi-v7a,x86,x86_64}
 
-if [ "$FF_ARCH" = "armv7a" ]; then
+if [ "$FF_ARCH" = "armeabi-v7a" ]; then
   make -f ./AVS3AudioDec_arm7_android.mk clean
   make -f ./AVS3AudioDec_arm7_android.mk
-elif [ "$FF_ARCH" = "arm64" ]; then
+elif [ "$FF_ARCH" = "arm64-v8a" ]; then
   make -f ./AVS3AudioDec_arm_android.mk clean
   make -f ./AVS3AudioDec_arm_android.mk
 elif [ "$FF_ARCH" = "x86" ]; then

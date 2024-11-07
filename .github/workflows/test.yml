@@ -6,7 +6,7 @@ on:
       abi:
         description: 'android abi'
         required: true
-        default: 'armv7a'
+        default: 'armeabi-v7a'
 
 jobs:
   linux:
