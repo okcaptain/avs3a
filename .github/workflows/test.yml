@@ -1,0 +1,48 @@
+name: test
+
+on:
+  workflow_dispatch:
+    inputs:
+      abi:
+        description: 'android abi'
+        required: true
+        default: 'armv7a'
+
+jobs:
+  linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r21e
+          add-to-path: false
+          local-cache: true
+
+      - name: Compile libuavs3d
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+        run: |
+
+          ANDROID_NDK_HOME=${{ env.ANDROID_NDK_HOME }}
+          export ANDROID_SDK=$ANDROID_HOME
+          export ANDROID_NDK=$ANDROID_NDK_HOME
+          export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
+          
+          ls -al $ANDROID_SDK/
+          ls -al $ANDROID_NDK/
+          ls -al $ANDROID_SDK/cmake
+
+
+          workDir=${{ github.workspace }}
+          echo "workDir=$workDir" >> $GITHUB_ENV
+
+          cd ./avs3Decoder/build/aarch64/
+          chmod +x ./build.sh
+          ./build.sh ${{ inputs.abi }}
+
+      - uses: actions/upload-artifact@v4.3.6
+        with:
+          name: libuavs3d-armv7a
+          path: ${{ env.workDir }}/libs/${{ inputs.abi }}

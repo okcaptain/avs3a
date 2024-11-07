@@ -1,7 +1,6 @@
 #!/bin/bash
 
 FF_ARCH=$1
-export NDK=$2
 
 mkdir -p ../../../libs/{arm64-v8a,armeabi-v7a,x86,x86_64}
 

@@ -5,7 +5,7 @@
 ###             by shengyancong
 ###
 # NDK=/root/android-ndk-r20b
-TOOLCHAIN=$(NDK)/toolchains/llvm/prebuilt/linux-x86_64
+TOOLCHAIN=$(ANDROID_NDK)/toolchains/llvm/prebuilt/linux-x86_64
 
 ARCH=arm64
 CPU=armv8-a
