@@ -20,7 +20,7 @@ jobs:
           add-to-path: false
           local-cache: true
 
-      - name: Compile libuavs3d
+      - name: Compile libav3ad
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
@@ -44,5 +44,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4.3.6
         with:
-          name: libuavs3d-armv7a
+          name: libav3ad-armv7a
           path: ${{ env.workDir }}/libs/${{ inputs.abi }}
