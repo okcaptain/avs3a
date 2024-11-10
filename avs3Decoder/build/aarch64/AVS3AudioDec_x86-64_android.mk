@@ -18,7 +18,7 @@ CROSS_PREFIX=$(TOOLCHAIN)/bin/$(CROSS)
 OPTIMIZE_CFLAGS="-march=$(CPU) -mfloat-abi=softfp -mfpu=vfp -marm"
 ADDI_LDFLAGS="-ldl -L../dependency/linux/arm"
 
-NAME = libav3ad.so
+NAME = libAVS3AudioDec.so
 OS_ARCH := x86_64
 ### include debug information: 1=yes, 0=no
 DBG?= 0
@@ -93,7 +93,7 @@ CFLAGS += -DANDROID -Wl,--no-undefined -Wl,--retain-symbols-file=retain_symbols.
 
 SRC_DIRS=../../src ../../../libavs3_common ../../../libavs3_debug
 SRC=$(foreach TMP_SRC_DIRS, $(SRC_DIRS), $(wildcard $(TMP_SRC_DIRS)/*.c)) 
-TARGET=../../../libs/x86_64/libav3ad.so
+TARGET=../../../libs/x86_64/libAVS3AudioDec.so
 OBJ:=$(SRC:.c=.o)
 
 LIB_EXTERN=-L../../lib/  -L../../deps/lib

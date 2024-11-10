@@ -17,7 +17,7 @@ CROSS=aarch64-linux-android
 CROSS_PREFIX=$(TOOLCHAIN)/bin/$(CROSS)
 OPTIMIZE_CFLAGS="-march=$(CPU)"
 
-NAME = libav3ad.so
+NAME = libAVS3AudioDec.so
 OS_ARCH := aarch64
 ### include debug information: 1=yes, 0=no
 DBG?= 0
@@ -92,7 +92,7 @@ CFLAGS += -DANDROID -Wl,--no-undefined -Wl,--retain-symbols-file=retain_symbols.
 
 SRC_DIRS=../../src ../../../libavs3_common ../../../libavs3_debug
 SRC=$(foreach TMP_SRC_DIRS, $(SRC_DIRS), $(wildcard $(TMP_SRC_DIRS)/*.c)) 
-TARGET=../../../libs/arm64-v8a/libav3ad.so
+TARGET=../../../libs/arm64-v8a/libAVS3AudioDec.so
 OBJ:=$(SRC:.c=.o)
 
 LIB_EXTERN=-L../../lib/  -L../../deps/lib
